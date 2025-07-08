@@ -34,7 +34,7 @@ export default function Portfolio() {
   const [showContent, setShowContent] = useState(false)
   const { scrollYProgress } = useScroll()
 
-  const sections = ["home", "about", "projects", "experience", "certifications", "publications" , "social-impact"]
+  const sections = ["home", "about", "projects", "experience", "publications" ,"certifications", "social-impact"]
 
   useEffect(() => {
     // Loading sequence
@@ -180,18 +180,19 @@ export default function Portfolio() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             
-
-           <motion.h1
-  className="text-6xl md:text-8xl font-bold mb-6 flex flex-wrap gap-x-4"
-  initial={{ opacity: 0, scale: 0.5 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1, delay: 1 }}
->
-  <span className="text-white">Kavisha</span>
-  <span className="bg-gradient-to-r from-gold via-yellow-400 to-gold bg-clip-text text-transparent">
-    Shah
-  </span>
-</motion.h1>
+<div className="flex justify-center text-center">
+  <motion.h1
+    className="text-6xl md:text-8xl font-bold mb-6 flex flex-wrap gap-x-4 justify-center"
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1, delay: 1 }}
+  >
+    <span className="text-white">Kavisha</span>
+    <span className="bg-gradient-to-r from-gold via-yellow-400 to-gold bg-clip-text text-transparent">
+      Shah
+    </span>
+  </motion.h1>
+</div>
 
 
             <motion.div
@@ -417,8 +418,31 @@ export default function Portfolio() {
         </div>
       </section>
 
+      
+      {/* Publications Section */}
+      <section id="publications" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gold">Research Publications</h2>
+            <p className="text-xl text-gray-300">Academic contributions and research achievements</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {publications.map((publication, index) => (
+              <PublicationCardComponent key={publication.title} publication={publication} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Section */}
-      <section id="certifications" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section id="certifications" className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -439,27 +463,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Publications Section */}
-      <section id="publications" className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gold">Research Publications</h2>
-            <p className="text-xl text-gray-300">Academic contributions and research achievements</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-            {publications.map((publication, index) => (
-              <PublicationCardComponent key={publication.title} publication={publication} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
           
       {/* Social Impact Section */}
       <section id="social-impact" className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -643,7 +646,7 @@ function LoadingScreen() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl font-mono text-gold mb-2">PORTFOLIO SYSTEM</h1>
+          <h1 className="text-3xl font-mono text-gold mb-2">KAVISHA'S PORTFOLIO SYSTEM</h1>
           <div className="text-yellow-400 font-mono text-sm">INITIALIZING DEVELOPER PROTOCOLS...</div>
         </motion.div>
 
